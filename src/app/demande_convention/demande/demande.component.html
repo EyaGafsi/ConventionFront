@@ -1,0 +1,192 @@
+<section class="hero-header">
+
+  <div class="content">  
+    <div class="container">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mx-auto mb-3">
+        <a  routerLink="/demandesUser"
+          class="btn btn-secondary btn-lg">Vos demandes</a>
+      </div>
+      <div class="row justify-content-center">
+				<div class="col-md-4 text-center mb-4">
+					<h2 class="heading-section">Ajouter une convention</h2>
+				</div>
+			</div>
+      <div class="row align-items-stretch justify-content-center no-gutters">
+        <div class="col-md-7">
+          <div class="form h-100 contact-wrap p-5">
+            <form class="mb-5" [formGroup]="demandeForm"  (ngSubmit)="ajouter()" method="post" id="contactForm" name="contactForm">
+              <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                  <label for="name" class="col-form-label">Nom</label>
+                  <input type="text" class="form-control" formControlName="nomDemande"  [ngClass]="{ 'is-invalid':  demandeForm.get('nomDemande').invalid && (demandeForm.get('nomDemande').dirty || demandeForm.get('nomDemande').touched) }" required name="nomDemande" id="name" placeholder="Nom du convention">
+                  <div *ngIf="demandeForm.get('nomDemande').invalid && (demandeForm.get('nomDemande').dirty || demandeForm.get('nomDemande').touched)"  id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div *ngIf="demandeForm.get('nomDemande').errors.required">Ce champ est obligatoire.</div>
+                    <div *ngIf="demandeForm.get('nomDemande').errors?.maxlength">ne depassez pas 50 charactères.</div>
+                    <div *ngIf="demandeForm.get('nomDemande').errors?.nameNotUnique">Ce nom existe déjà.</div>
+      
+                  </div>
+                </div>
+
+                <div class="col-md-6 form-group mb-3">
+                    <label for="" class="col-form-label">type *</label>
+
+                    <select formControlName="typeDemande"  [ngClass]="{ 'is-invalid':  demandeForm.get('typeDemande').invalid && (demandeForm.get('typeDemande').dirty || demandeForm.get('typeDemande').touched) }" required name="typeDemande" class="form-select">
+                        <option value="">-- Sélectionner un type --</option>
+                        <option value="médicale et paramedicale">médicale et paramedicale
+                        </option>
+                        <option value="bien-être">bien-être
+                        </option>
+                        <option value="sport">sport
+                        </option>
+                        <option value="service">service
+                        </option>
+                        <option value="textile">textile</option>
+                        <option value="loisir">loisir</option>
+                        <option value="gastronomie">gastronomie</option>
+                        <option value="electroménager">electroménager</option>
+                      </select>
+                      <div *ngIf="demandeForm.get('typeDemande').invalid && (demandeForm.get('typeDemande').dirty || demandeForm.get('typeDemande').touched)"  id="validationServerUsernameFeedback" class="invalid-feedback">
+                        <div *ngIf="demandeForm.get('typeDemande').errors.required">Ce champ est obligatoire.</div>
+                        <div *ngIf="demandeForm.get('typeDemande').errors?.maxlength">ne depassez pas 50 charactères.</div>
+          
+                      </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                  <label for="tel" class="col-form-label">Téléphone</label>
+                  <input type="text" class="form-control" formControlName="telephone"  [ngClass]="{ 'is-invalid':  demandeForm.get('telephone').invalid && (demandeForm.get('telephone').dirty || demandeForm.get('telephone').touched) }" required name="telephone" placeholder="Numéro de téléphone">
+                  <div *ngIf="demandeForm.get('telephone').invalid && (demandeForm.get('telephone').dirty || demandeForm.get('telephone').touched)"  id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div *ngIf="demandeForm.get('telephone').errors.required">Ce champ est obligatoire.</div>
+                    <div *ngIf="demandeForm.get('telephone').errors?.maxlength">il faut 8 chiffre.</div>
+                    <div *ngIf="demandeForm.get('telephone').errors?.minlength">il faut 8 chiffre.</div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 form-group mb-3">
+                  <label for="emailDemande" class="col-form-label">emailDemande</label>
+                  <input type="emailDemande" class="form-control" formControlName="emailDemande"  [ngClass]="{ 'is-invalid':  demandeForm.get('emailDemande').invalid && (demandeForm.get('emailDemande').dirty || demandeForm.get('emailDemande').touched) }" required name="emailDemande" id="emailDemande"  placeholder="emailDemande">
+                  <div *ngIf="demandeForm.get('emailDemande').invalid && (demandeForm.get('emailDemande').dirty || demandeForm.get('emailDemande').touched)"  id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div *ngIf="demandeForm.get('emailDemande').errors.required">Ce champ est obligatoire.</div>
+                    <div *ngIf="demandeForm.get('emailDemande').errors?.maxlength">ne depassez pas 50 charactères.</div>
+                    <div *ngIf="demandeForm.get('emailDemande').errors?.email">email non valide.</div>
+                    <div *ngIf="demandeForm.get('emailDemande').errors?.emailNotUnique">Cet email existe déjà.</div>
+      
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12 form-group mb-3">
+                  <label for="adress" class="col-form-label">Adresse</label>
+                  <input type="text" class="form-control" formControlName="adresseDemande"  [ngClass]="{ 'is-invalid':  demandeForm.get('adresseDemande').invalid && (demandeForm.get('adresseDemande').dirty || demandeForm.get('adresseDemande').touched) }" required name="adresseDemande" id="adress" placeholder="Adresse">
+                  <div *ngIf="demandeForm.get('adresseDemande').invalid && (demandeForm.get('adresseDemande').dirty || demandeForm.get('adresseDemande').touched)"  id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div *ngIf="demandeForm.get('adresseDemande').errors.required">Ce champ est obligatoire.</div>
+                    <div *ngIf="demandeForm.get('adresseDemande').errors?.maxlength">ne depassez pas 50 charactères.</div>
+                   
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="row mb-1">
+                <div class="col-md-12 form-group mb-3">
+                  <label for="Beneficiaire" class="col-form-label">Beneficiaire</label>
+                  <textarea class="form-control" formControlName="beneficiaireDemande"  [ngClass]="{ 'is-invalid':  demandeForm.get('beneficiaireDemande').invalid && (demandeForm.get('beneficiaireDemande').dirty || demandeForm.get('beneficiaireDemande').touched) }" required name="beneficiaireDemande" id="Beneficiaire" cols="30" rows="1"  placeholder="beneficiaire"></textarea>
+                  <div *ngIf="demandeForm.get('beneficiaireDemande').invalid && (demandeForm.get('beneficiaireDemande').dirty || demandeForm.get('beneficiaireDemande').touched)"  id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div *ngIf="demandeForm.get('beneficiaireDemande').errors.required">Ce champ est obligatoire.</div>
+                    <div *ngIf="demandeForm.get('beneficiaireDemande').errors?.maxlength">ne depassez pas 100 charactères.</div>     
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-md-12 form-group mb-3">
+                  <label for="Objectif" class="col-form-label">Objectif </label>
+                  <textarea class="form-control" formControlName="objectifDemande"  [ngClass]="{ 'is-invalid':  demandeForm.get('objectifDemande').invalid && (demandeForm.get('objectifDemande').dirty || demandeForm.get('objectifDemande').touched) }" required name="objectifDemande" id="Objectif" cols="30" rows="1"  placeholder="objectif"></textarea>
+                  <div *ngIf="demandeForm.get('objectifDemande').invalid && (demandeForm.get('objectifDemande').dirty || demandeForm.get('objectifDemande').touched)"  id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div *ngIf="demandeForm.get('objectifDemande').errors.required">Ce champ est obligatoire.</div>
+                    <div *ngIf="demandeForm.get('objectifDemande').errors?.maxlength">ne depassez pas 100 charactères.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-1">
+                <div class="col-md-12 form-group mb-3">
+                  <label for="condition" class="col-form-label">condition</label>
+                  <textarea class="form-control" formControlName="conditionDemande"  [ngClass]="{ 'is-invalid':  demandeForm.get('conditionDemande').invalid && (demandeForm.get('conditionDemande').dirty || demandeForm.get('conditionDemande').touched) }" required name="conditionDemande" id="condition" cols="30" rows="1"  placeholder="condition"></textarea>
+                  <div *ngIf="demandeForm.get('conditionDemande').invalid && (demandeForm.get('conditionDemande').dirty || demandeForm.get('conditionDemande').touched)"  id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div *ngIf="demandeForm.get('conditionDemande').errors.required">Ce champ est obligatoire.</div>
+                    <div *ngIf="demandeForm.get('conditionDemande').errors?.maxlength">ne depassez pas 50 charactères.</div>                   
+      
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12 form-group mb-3">
+                  <label for="avantages" class="col-form-label">avantages</label>
+                  <ul *ngFor="let avantage of new.demandeAvantages">
+                    <div class="row">
+                      <li class="col-md-11">        <i class="fas fa-check"></i> 
+                        {{ avantage.details }}</li>
+                      <a class="col" type="button" (click)="supprimer(avantage)"><i class="fa-solid fa-xmark fa-lg"
+                          style="color: #f50000;"></i></a>
+                    </div>
+                  </ul>
+    
+                  <div class="row mb-3">
+                    <div class="col-md-11">
+    
+                    <input type="text" class="form-control col-md-10" formControlName="nouvelAvantage" name="nouvelAvantage" id="avantages"
+                      placeholder="Ajouter un nouvel avantage"></div><div  class="col-md-1">
+                    <a (click)="ajouterAvantage()" class="btn btn-primary col-md-1" style="width: fit-content;" type="button"><i
+                        class="fa-solid fa-plus fa-lg"></i></a> 
+                          
+                      </div>
+                </div></div>
+                </div>
+
+              <div class="row justify-content-center">
+                <div class="col-md-5 form-group text-center">
+                  <input type="submit" value="Envoyer une demande" class="btn btn-primary">
+                  <span class="submitting"></span>
+                </div>
+              </div>
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="fixed-bottom p-3" *ngIf="showSuccessAlert">
+    <div class="success alert fixed-end">
+       <div class="content">
+         <div class="icon">
+           <svg width="50" height="50" id="Layer_1" style="enable-background:new 0 0 128 128;" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle fill="#fff" cx="64" cy="64" r="64"/></g><g><path fill="#3EBD61" d="M54.3,97.2L24.8,67.7c-0.4-0.4-0.4-1,0-1.4l8.5-8.5c0.4-0.4,1-0.4,1.4,0L55,78.1l38.2-38.2   c0.4-0.4,1-0.4,1.4,0l8.5,8.5c0.4,0.4,0.4,1,0,1.4L55.7,97.2C55.3,97.6,54.7,97.6,54.3,97.2z"/></g></svg>
+       </div>
+         <p>{{message}}</p>
+       </div>
+       <button class="close" (click)="closeAlert()">
+        <svg height="18px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#69727D" d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+       </button>
+     </div>
+    </div>
+    
+    <div class="fixed-bottom p-3" *ngIf="showFailedAlert">
+      <div class="danger alert  fixed-end">
+        <div class="content">
+          <div class="icon">
+            <svg height="50" viewBox="0 0 512 512" width="50" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z"/></svg>
+        </div>
+          <p>{{message}}</p>
+        </div>
+        <button class="close" (click)="closeAlert()">
+         <svg height="18px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#69727D" d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+        </button>
+      </div></div>
+</section>    

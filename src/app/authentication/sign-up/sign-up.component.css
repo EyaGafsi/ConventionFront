@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+::selection{
+  background: #4158d0;
+  color: #fff;
+}
+.wrapper{
+  width: 500px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  margin-top: 7%;
+}
+.wrapper .title{
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+.wrapper form{
+  padding: 10px 30px 50px 30px;
+}
+.wrapper form .field{
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+
+  position: relative;
+}
+.field{  margin-bottom: 10px; 
+}
+.last-input {
+  margin-bottom: 20px; /* ou toute autre valeur souhaitée pour la marge */
+}
+.wrapper form .field input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+.wrapper form .field input:focus,
+form .field input:valid{
+  border-color: #4158d0;
+}
+.wrapper form .field label{
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  
+  color: #999999;
+  font-weight: 400;
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+form .field input:focus ~ label,
+form .field input:valid ~ label{
+  top: 0%;
+  font-size: 16px;
+  color: #4158d0;
+  background: #fff;
+  transform: translateY(-50%);
+}
+form .content{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-around;
+}
+form .content .checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form .content input{
+  width: 15px;
+  height: 15px;
+  background: red;
+  
+}
+
+form .content label{
+  color: #262626;
+  user-select: none;
+  padding-left: 5px;
+}
+form .content .pass-link{
+  color: "";
+}
+form .field input[type="submit"]{
+  color: #fff;
+  border: none;
+  padding-left: 0;
+  margin-top: -10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  transition: all 0.3s ease;
+}
+form .field input[type="submit"]:active{
+  transform: scale(0.95);
+}
+form .signup-link{
+  color: #262626;
+  margin-top: 20px;
+}
+form .pass-link a,
+form .signup-link a{
+  color: #4158d0;
+  text-decoration: none;
+}
+form .pass-link a:hover,
+form .signup-link a:hover{
+  text-decoration: underline;
+}
+
+.container{ 
+  margin-right: 0px;
+padding-right: 0px;  
+margin-left: 0px;
+padding-left: 0px;
+max-width: 100%;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background:  url(../../../assets/images/back.png) ;
+  background-size: cover;
+  background-repeat: no-repeat;  
+  pointer-events: auto; 
+}
+
+
+.alert{
+  display: flex;
+  align-items:center;
+  padding: 0.55rem 0.65rem 0.55rem 0.75rem;
+  border-radius:1rem;
+  min-width:400px;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  box-shadow:
+  0px 3.2px 13.8px rgba(0, 0, 0, 0.02),
+  0px 7.6px 33.3px rgba(0, 0, 0, 0.028),
+  0px 14.4px 62.6px rgba(0, 0, 0, 0.035),
+  0px 25.7px 111.7px rgba(0, 0, 0, 0.042),
+  0px 48px 208.9px rgba(0, 0, 0, 0.05),
+  0px 115px 500px rgba(0, 0, 0, 0.07)
+}
+.content{
+  display: flex;
+  align-items:center;
+}
+.icon{
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius:39% 61% 42% 58% / 50% 51% 49% 50%;
+  box-shadow:
+  0px 3.2px 13.8px rgba(0, 0, 0, 0.02),
+  0px 7.6px 33.3px rgba(0, 0, 0, 0.028),
+  0px 14.4px 62.6px rgba(0, 0, 0, 0.035),
+  0px 25.7px 111.7px rgba(0, 0, 0, 0.042),
+  0px 48px 208.9px rgba(0, 0, 0, 0.05),
+  0px 115px 500px rgba(0, 0, 0, 0.07)
+}
+.close{
+  background-color: transparent;
+  border:none;
+  outline:none;
+  transition:all 0.2s ease-in-out;
+  padding: 0.75rem;
+  border-radius:0.5rem;
+  cursor:pointer;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+.close:hover{
+  background-color: #fff;
+}
+
+.success{
+  background-color: rgb(32, 177, 73);
+  border:2px solid #3ebd61;
+  color: white;
+  max-width: 20%;
+  width: 150px;
+  white-space: normal;
+}
+.success .icon{
+  background-color:#3bb45d;
+}
+.info{
+  background-color: rgba(0, 108, 227,0.2);
+  border:2px solid #006CE3;
+}
+.info .icon{
+  background-color: #006CE3;
+}
+.warning{
+  background-color: rgba(239, 148, 0, 0.2);
+  border:2px solid #EF9400;
+}
+.warning .icon{
+  background-color: #EF9400;
+}
+
+.danger{
+  background-color: rgba(241, 87, 53, 0.973);
+  border:2px solid #EF9400;
+  color: white;
+  max-width: 20%;
+  width: 150px;
+  white-space: normal;
+}
+.danger .icon{
+  background-color: rgba(246, 85, 49, 0.973);
+}

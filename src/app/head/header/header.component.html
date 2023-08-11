@@ -1,0 +1,52 @@
+  
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+          <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0" [ngClass]="{ 'navbar-dark': isOnEmployeePage }">
+
+              <a href="" class="navbar-brand p-0">
+                 <img id="logo" src="../../../assets/images/logo2.png" alt="Logo" > 
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                  <span class="fa fa-bars"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <div class="navbar-nav mx-auto py-0" >
+                      <a routerLink="/" class="nav-item nav-link ">Acceuil</a>
+                      <a routerLink="/about" class="nav-item nav-link">À Propos</a>
+                      <a routerLink="/service" class="nav-item nav-link">Service</a>
+                      <a routerLink="/contact" class="nav-item nav-link">Contact</a>
+                      <a *ngIf="userService.roleMatch(['ROLE_RH'])" class="nav-item nav-link" routerLink="/rh" >Conventions</a>
+                      <a *ngIf="userService.roleMatch(['ROLE_EMPLOYEE'])" class="nav-item nav-link" routerLink="/employee" >Conventions</a>
+                      <a *ngIf="userService.roleMatch(['ROLE_ADMIN'])" class="nav-item nav-link" routerLink="/admin" >utilisateurs</a>
+                      <a *ngIf="userService.roleMatch(['ROLE_EMPLOYEE'])" class="nav-item nav-link" routerLink="/demande" >Demande</a>
+                      <a *ngIf="userService.roleMatch(['ROLE_RH'])" class="nav-item nav-link" routerLink="/demandes" >Demandes</a>
+                      <div class="dropdown position-relative" (click)="noticationNumber()" *ngIf="userService.roleMatch(['ROLE_RH'])">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                          <span><i class="fa-solid fa-bell"></i></span>
+                          <span class="position-absolute badge rounded-pill bg-danger" *ngIf="notifNumber > 0">
+                            {{ notifNumber }}
+                          </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" style="max-width: 300px; width: 250px; font-size: 15px; max-height: 200px; overflow-y: auto;" *ngIf="notif.length > 0">
+                          <ng-container *ngFor="let item of notif; let index = index; let last = last">
+                            <div [ngClass]="{'unread': index <number}">
+                              <a class="dropdown-item"  style="white-space: normal;">
+                              {{ item }}
+                            </a>
+                            <div *ngIf="!last" class="dropdown-divider"></div>
+                            </div>
+                          </ng-container>
+                        </div>
+                      
+                        <div class="dropdown-menu dropdown-menu-end" *ngIf="notif.length === 0">
+                          <a *ngIf="notif.length === 0" class="dropdown-item">vous n'avez aucune notification</a>
+                        </div>
+                      </div>
+                    </div>
+                  <a *ngIf="!isLoggedIn() && !isLoginPage()" type="button" routerLink="/login" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">login</a>
+                  <a *ngIf="isLoggedIn()" type="button" (click)="logout()" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">logout</a>
+
+                </div>
+          </nav>
+        </div>
+

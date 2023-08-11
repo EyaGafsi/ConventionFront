@@ -1,0 +1,116 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" #carousel>
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let convention of conventions; let i = index" [class.active]="i === currentIndex">
+      <section class="py-5">
+    <div class="container cont">
+      <div class="row">
+        <div class="col-md-6 my-md-auto mb-5 mb-md-0 text-center text-md-left">
+          <span class="text-uppercase text-muted small-xl">{{convention.typeConvention}}</span>
+          <h1 class="display-4 mt-2 mb-5">{{convention.nomConvention}}
+          </h1>
+          <div class="col-md-7 my-md-2 mb-6 mb-md-0 text-center text-md-left">
+            <p><i class="fa-solid fa-phone"></i>{{convention.telephone}}
+            </p>
+            <p> <i class="fa-solid fa-location-dot"></i> {{convention.adresseConvention}}
+            </p>
+          </div>
+
+
+        </div>
+        <div class="col-md-6 play-wrapper">
+          <img src="../../assets/images/welcome.png" class="img-fluid d-block mx-auto" alt="MacBook" />
+          <div class="play d-flex flex-row align-item-center show-video">
+            <em class="icon" data-feather="play"></em>
+          </div>
+          <div class="col-md-7 my-md-3 mb-6 mb-md-0 text-center text-md-left circle-background">
+            <div class="media">
+              <div class="icon-box mt-0 ml-0">
+                <div class="icon-box-inner small-xs">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+              </div>
+              <div class="media-body">
+                <h5 class="mt-0">Beneficiaire</h5>
+                <span>{{convention.beneficiaireConvention}}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+<section id="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+        <div class="row mt-3">
+          <div class="col-sm-6 mb-5">
+            <div class="media">
+              <div class="icon-box mt-0 ml-0">
+                <div class="icon-box-inner small-xs">
+                  <span data-feather="layers" width="30" height="30"></span><i class="fa-solid fa-file-signature"></i>
+                </div>
+              </div>
+              <div class="media-body">
+                <h5 class="mt-0">Objectif</h5>
+                <span>{{convention.objectifConvention}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-5">
+            <div class="media">
+              <div class="icon-box mt-0 ml-0">
+                <div class="icon-box-inner small-xs">
+                  <span data-feather="zap" width="30" height="30"></span><i class="fa-regular fa-circle-check"></i>
+                </div>
+              </div>
+              <div class="media-body">
+                <h5 class="mt-0">Condition</h5>
+                <span>{{convention.conditionConvention}}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<div class="footer_bg">
+
+  <section class="info_section layout_padding2-bottom">
+    <div class="container">
+      <h3 class="">
+        Avantages
+      </h3>
+    </div>
+    <div class="container info_content">
+
+      <div>
+        <ul *ngFor="let avantage of convention.avantages">
+          <li> <i class="fa-solid fa-check"></i>   
+            {{avantage.details}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+</div><a class="carousel-control-prev" (click)="movePrev()" role="button" data-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" (click)="moveNext()" role="button" data-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+</a></div> </div>

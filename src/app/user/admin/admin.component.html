@@ -1,0 +1,89 @@
+<section class="hero-header">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6 text-center mb-5">
+				<h2 class=" title">Liste des utilisateurs</h2>
+			</div>
+		</div>
+		<div class="row ">
+			<div class="col-sm-1 "><select style="width: auto;font-size: 15px;  height: fit;margin-bottom: 15px;"
+					class="form-select" (change)="changeSize($event)">
+
+					<option selected value="10">10</option>
+					<option value="25">25</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
+				</select> </div>
+			<div class="col-sm-11">
+				<div class="search-box" type="button" (click)="search()">
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<input type="text" class="form-control" [(ngModel)]="username" placeholder="Recherche&hellip;">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+
+				<table class="table table-responsive-xl">
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Email <i class="fa fa-sort" type="button" (click)="trie('email')"></i></th>
+							<th>Nom d'utilisateur <i class="fa fa-sort" (click)="trie('username')"></i></th>
+							<th>Prénom <i class="fa fa-sort" (click)="trie('prenom')"></i></th>
+							<th>Nom <i class="fa fa-sort" (click)="trie('nom')"></i></th>
+							<th>Téléphone</th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let user of users" class="alert" role="alert">
+							<td>
+								<label class="checkbox-wrap checkbox-primary">
+									<input type="checkbox" [checked]="checkRoleRH(user.roles)"
+										(change)="onCheckboxChange(user,$event.target.checked)">
+									<span class="checkmark"></span>
+								</label>
+							</td>
+							<td class="d-flex align-items-center">
+								<i class="fa-solid fa-user"></i>
+								<div class="pl-3 email">
+									<span>{{user.email}}</span>
+									<span>Ajouté le :{{user.dateAjout}}</span>
+								</div>
+							</td>
+							<td>{{user.userName}}</td>
+							<td>{{user.firstName}}</td>
+							<td>{{user.lastName}}</td>
+							<td>{{user.phone}}</td>
+							<td>
+								<a *ngIf="!hasRole(user.roles, 'ROLE_ADMIN')" type="button" (click)="supprimer(user)">
+									<i class="fa-solid fa-trash fa-xl" style="color: #f00000;"></i>
+								</a>
+
+
+
+
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="clearfix text">
+
+					<div class="hint-text"> <b>{{currentPage}}</b> - <b>{{numberOfPages}}</b>
+					</div>
+					<ul class="pagination">
+						<li class="page-item"><a (click)="goToPreviousPage()" class="page-link"><i
+									class="fa fa-angle-double-left"></i></a></li>
+						<li class="page-item" [class.active]="currentPage === page"
+							*ngFor="let page of generatePageNumbers(numberOfPages);">
+							<a class="page-link" (click)="changePage(page)">{{ page }}</a>
+						</li>
+						<li class="page-item"><a (click)="goToNextPage()" class="page-link"><i
+									class="fa fa-angle-double-right"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
